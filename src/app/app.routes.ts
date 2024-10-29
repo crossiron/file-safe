@@ -5,13 +5,13 @@ export const ROUTE_SEGMENT_LOGIN = ['/login'];
 export const ROUTE_SEGMENT_SAFE = ['/safe'];
 
 export const navigateToLogin = (router: Router) => router.navigate(ROUTE_SEGMENT_LOGIN);
-export const navigateToSafe = (router: Router) => router.navigate(ROUTE_SEGMENT_SAFE);
+export const navigateToHome = (router: Router) => router.navigate(ROUTE_SEGMENT_SAFE);
 
 export const routes: Routes = [
   {
     path: 'login',
     pathMatch: 'full',
-    canActivate: [isNotLoggedInGuard(navigateToSafe)],
+    canActivate: [isNotLoggedInGuard(navigateToHome)],
     loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
   },
   {
