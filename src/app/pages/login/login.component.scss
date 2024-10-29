@@ -2,7 +2,11 @@
   --white: var(--file-safe-white);
   --dark: #0C1A2F;
 }
+
 svg {
+  width: 550px;
+  height: 412px;
+
   .background {
     fill: var(--white);
     @media (prefers-color-scheme: dark) {
