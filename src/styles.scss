@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+$white: white;
+$dark-blue: #0c1a2f;
+$black-2: #0d1517;
+$orange: #f5a633;
+$black: #0b1517;
+$dark-slate-grey: #22535a;
+$old-lace: #fef6e9;
+$dim-grey: #737373;
+$main-blue: #0c1a2f;
+$dark-slate-grey-2: #4c5b5b;
+
+@use "bulma/sass" with (
+  $cssvars-prefix: "file-safe-",
+  $primary: $orange
+);
