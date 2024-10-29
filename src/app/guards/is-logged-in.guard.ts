@@ -1,25 +1,20 @@
 import {inject} from '@angular/core';
 import {SessionService} from '../services/session.service';
 import {Router} from '@angular/router';
+import {navigateToHome, navigateToLogin} from "../app.routes";
 
-const isLoggedIn = () => inject(SessionService).isLoggedIn();
-
-const doRedirect = (redirect: (router: Router) => void) => {
-    const router = inject(Router);
-    redirect(router);
-    return false;
-}
-
-export const isLoggedInGuard = (redirect: (router: Router) => void) => () => {
-    if (isLoggedIn()) {
+export const isLoggedInGuard = () => {
+    if (inject(SessionService).isLoggedIn()) {
         return true;
     }
-    return doRedirect(redirect);
+    navigateToLogin(inject(Router));
+    return false;
 };
 
-export const isNotLoggedInGuard = (redirect: (router: Router) => void) => () => {
-    if (!isLoggedIn()) {
+export const isNotLoggedInGuard = () => {
+    if (!inject(SessionService).isLoggedIn()) {
         return true;
     }
-    return doRedirect(redirect);
+    navigateToHome(inject(Router));
+    return false;
 };
