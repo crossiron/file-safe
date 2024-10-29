@@ -1,0 +1,19 @@
+:host {
+  --white: var(--file-safe-white);
+  --dark: #0C1A2F;
+}
+svg {
+  .background {
+    fill: var(--white);
+    @media (prefers-color-scheme: dark) {
+      fill: var(--dark);
+    }
+  }
+
+  .inverted-background {
+    fill: var(--dark);
+    @media (prefers-color-scheme: dark) {
+      fill: var(--white);
+    }
+  }
+}
