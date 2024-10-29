@@ -10,12 +10,14 @@ export const navigateToSafe = (router: Router) => router.navigate(ROUTE_SEGMENT_
 export const routes: Routes = [
   {
     path: 'login',
-    canActivate: [isNotLoggedInGuard(navigateToLogin)],
+    pathMatch: 'full',
+    canActivate: [isNotLoggedInGuard(navigateToSafe)],
     loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
   },
   {
     path: 'safe',
-    canActivate: [isLoggedInGuard(navigateToSafe)],
+    pathMatch: 'full',
+    canActivate: [isLoggedInGuard(navigateToLogin)],
     loadChildren: () => import('./pages/safe/safe.routes')
   },
   {
