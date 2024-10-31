@@ -21,6 +21,9 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "bulma": "^1.0.2",
+    "file-icon-vectors": "^1.0.0",
+    "javascript-time-ago": "^2.5.11",
+    "pretty-bytes": "^6.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

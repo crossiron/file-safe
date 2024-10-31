@@ -1,1 +1,53 @@
-<p>safe works!</p>
+<app-header></app-header>
+<div class="container">
+  <div class="is-flex">
+    <h2 class="is-flex-grow-1 title">Files</h2>
+    <div class="actions is-flex is-align-items-center">
+      <button class="button is-primary is-flex-shrink-1 is-small">Upload</button>
+    </div>
+  </div>
+  @if (error()) {
+    <article class="message is-danger is-small">
+      <div class="message-body">
+        <h4>{{ error()?.name }}</h4>
+        {{ error()?.message }}
+      </div>
+    </article>
+  }
+  <table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+    <tr>
+      <th>filename</th>
+      <th>size</th>
+      <th>created</th>
+      <th>updated</th>
+      <th>accessed</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (file of files(); track file.id) {
+        <tr>
+          <td>
+            <span [class]="['mr-2', 'fiv-cla', 'fiv-icon-' + file.extension]" [title]="file.mimetype"></span>
+            {{ file.filename }}
+          </td>
+          <td [title]="file.size">
+            {{ file.size | fileSize }}
+          </td>
+          <td>
+            {{ file.created | date }}
+            <sub>({{ file.created | timeAgo }})</sub>
+          </td>
+          <td>
+            {{ file.updated | date }}
+            <sub>({{ file.updated | timeAgo }})</sub>
+          </td>
+          <td>
+            {{ file.accessed | date }}
+            <sub>({{ file.accessed | timeAgo }})</sub>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
