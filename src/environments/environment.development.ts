@@ -1,9 +1,7 @@
 export const environment = {
-  production: false,
-  sessionTimeout: 50 * 60 * 1000,
+  production: true,
+  sessionTimeout: 300000,
   endpoints: {
-    files: {
-      collection: '/api/v1/files',
-    }
+    files: '/api/v1/files'
   }
 };

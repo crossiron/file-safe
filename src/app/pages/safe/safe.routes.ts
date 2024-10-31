@@ -6,6 +6,7 @@ const routes: Routes = [
   {
     path: '',
     resolve: safeResolver(),
+    runGuardsAndResolvers: 'always',
     loadComponent: () => import('./safe.component').then(m => m.SafeComponent)
   },
 ];

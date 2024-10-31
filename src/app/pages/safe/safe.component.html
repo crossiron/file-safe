@@ -1,10 +1,8 @@
 <app-header></app-header>
 <div class="container">
-  <div class="is-flex">
+  <div class="is-flex is-align-items-center">
     <h2 class="is-flex-grow-1 title">Files</h2>
-    <div class="actions is-flex is-align-items-center">
-      <button class="button is-primary is-flex-shrink-1 is-small">Upload</button>
-    </div>
+    <app-upload-button (uploaded)="uploaded($event)"></app-upload-button>
   </div>
   @if (error()) {
     <article class="message is-danger is-small">

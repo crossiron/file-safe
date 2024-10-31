@@ -1,3 +1,5 @@
+const path = require('node:path');
+
 const data = [
   {
     id: 'f1a2b3c4d5',
@@ -102,7 +104,23 @@ const data = [
 ];
 
 const files = () => ({
-  files: data,
+  files: data.sort((a, b) => b.created - a.created),
 });
+const uploadFile = (file) => {
+  data.push({
+    id: Math.random().toString(36).slice(2),
+    filename: file.originalname,
+    extension: path.extname(file.originalname).slice(1),
+    size: file.size,
+    created: new Date(),
+    updated: new Date(),
+    accessed: new Date(),
+    mimetype: file.mimetype
+  });
+  return {
+    file: data[data.length - 1]
+  }
+}
 
 exports.files = files;
+exports.uploadFile = uploadFile;

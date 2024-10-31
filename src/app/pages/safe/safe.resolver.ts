@@ -6,7 +6,7 @@ import {SafeService} from './safe.service';
 const safeFileListResolver: ResolveFn<ListModel> = async () => {
   try {
     return {
-      ...await inject(SafeService).files(),
+      ...await inject(SafeService).getFiles(),
       error: undefined,
     }
   } catch (error) {

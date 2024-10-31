@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {firstValueFrom} from 'rxjs';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
+import {firstValueFrom, Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {FilesResponse} from './safe.model';
 
@@ -10,7 +10,19 @@ import {FilesResponse} from './safe.model';
 export class SafeService {
   #httpClient = inject(HttpClient);
 
-  files(): Promise<FilesResponse> {
-    return firstValueFrom(this.#httpClient.get<FilesResponse>(environment.endpoints.files.collection));
+  getFiles(): Promise<FilesResponse> {
+    return firstValueFrom(this.#httpClient.get<FilesResponse>(environment.endpoints.files));
+  }
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', environment.endpoints.files, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.#httpClient.request(req);
   }
 }
