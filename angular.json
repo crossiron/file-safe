@@ -35,9 +35,15 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "localize": true
           },
           "configurations": {
+            "de": {
+              "localize": [
+                "de"
+              ]
+            },
             "production": {
               "budgets": [
                 {
@@ -73,11 +79,14 @@
             "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
-            "production": {
-              "buildTarget": "file-safe:build:production"
+            "de": {
+              "buildTarget": "file-safe:build:development,de"
             },
             "development": {
               "buildTarget": "file-safe:build:development"
+            },
+            "production": {
+              "buildTarget": "file-safe:build:production"
             }
           },
           "defaultConfiguration": "development"
@@ -105,6 +114,17 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      },
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "de": {
+            "translation": "src/locales/messages.de.json"
+          },
+          "fr": {
+            "translation": "src/locales/messages.fr.json"
           }
         }
       }

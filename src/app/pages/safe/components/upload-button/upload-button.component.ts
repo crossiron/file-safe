@@ -41,12 +41,14 @@ export class UploadButtonComponent {
     loaded: 0
   });
   isModalActive = computed(() => ['uploading', 'processing'].includes(this.state()));
+  title = computed(() => this.state() === 'processing' ? $localize`:@@pages.safe.upload-button.processing:Processing...` : $localize`:@@pages.safe.upload-button.uploading:Uploading...`);
+
   @Output() onUpload = new EventEmitter<UploadOutcome>();
 
   file!: File;
-
   #service = inject(SafeService);
   #session = inject(SessionService);
+
   #uploadSubscription?: Subscription;
 
   onSelectFile($event: Event) {
@@ -101,5 +103,4 @@ export class UploadButtonComponent {
     this.state.set('waiting');
     this.onUpload.emit({success, response, error});
   }
-
 }

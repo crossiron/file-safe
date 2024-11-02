@@ -1,0 +1,20 @@
+{
+  "locale": "de",
+  "translations": {
+    "app.name": "Datei Tresor",
+    "header.logout": "Abmelden",
+    "pages.login.button": "Anmelden",
+    "pages.safe.files-list.filename": "Dateiname",
+    "pages.safe.files-list.size": "Dateigröße",
+    "pages.safe.files-list.created": "Erstellt",
+    "pages.safe.files-list.updated": "Aktualisiert",
+    "pages.safe.files-list.accessed": "Zugriff",
+    "pages.safe.upload-button.button": "Hochladen",
+    "pages.safe.upload-button.cancel": "Abbrechen",
+    "pages.safe.upload-button.processing": "Verarbeitung...",
+    "pages.safe.upload-button.uploading": "Hochladen...",
+    "pages.safe.title": "Dateien",
+    "pages.safe.notifications.uploadSuccess": "Datei erfolgreich hochgeladen!",
+    "pages.safe.notifications.uploadFailed": "Datei-Upload fehlgeschlagen"
+  }
+}

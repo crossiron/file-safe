@@ -1,0 +1,20 @@
+{
+  "locale": "fr",
+  "translations": {
+    "app.name": "Coffre-fort de fichiers",
+    "header.logout": "Déconnexion",
+    "pages.login.button": "Connexion",
+    "pages.safe.files-list.filename": "Nom du fichier",
+    "pages.safe.files-list.size": "Taille du fichier",
+    "pages.safe.files-list.created": "Créé",
+    "pages.safe.files-list.updated": "Mis à jour",
+    "pages.safe.files-list.accessed": "Consulté",
+    "pages.safe.upload-button.button": "Téléverser",
+    "pages.safe.upload-button.cancel": "Annuler",
+    "pages.safe.upload-button.processing": "Traitement...",
+    "pages.safe.upload-button.uploading": "Téléversement...",
+    "pages.safe.title": "Fichiers",
+    "pages.safe.notifications.uploadSuccess": "Fichier téléversé avec succès !",
+    "pages.safe.notifications.uploadFailed": "Échec du téléversement du fichier"
+  }
+}

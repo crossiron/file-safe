@@ -44,7 +44,7 @@ export class SafeComponent {
     if ($event.success) {
       this.uploadNotification.set({
         type: 'success',
-        message: 'safe.notifications.uploadSuccess'
+        message: $localize`:@@pages.safe.notifications.uploadSuccess:File uploaded successfully!`
       });
       return void this.#router.navigate([], {
         relativeTo: this.#route,
@@ -56,7 +56,7 @@ export class SafeComponent {
     if ($event.error) {
       this.uploadNotification.set({
         type: 'danger',
-        message: 'safe.notifications.uploadFailed'
+        message: $localize`:@@pages.safe.notifications.uploadFailed:File upload failed`
       });
     }
   }

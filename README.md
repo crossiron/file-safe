@@ -66,6 +66,33 @@ Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.gi
 
 Run `npm run e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+### Translations
+Run `ng extract-i18n --format=json --output-path src/locales --out-file messages.en.json` and provide a translation for each locale available in `src/locales`
+
+#### Adding a new locale
+To add a new locale to the project, update `angular.json` by adding the locale in `project.file-safe.i18n.locales`.
+Don't forget to after run the [extract](#translations) command and create a translation file.
+```json
+angular.json
+{
+  ...
+  "projects": {
+    ...
+    "file-safe": {
+      ...
+      "i18n": {
+        "locales": {
+          ...
+          "new-locale": {
+            "translation": "src/locales/messages.new-locale.json"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

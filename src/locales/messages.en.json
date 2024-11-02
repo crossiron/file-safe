@@ -1,0 +1,20 @@
+{
+  "locale": "en",
+  "translations": {
+    "app.name": "File Safe",
+    "header.logout": "Logout",
+    "pages.login.button": "Login",
+    "pages.safe.files-list.filename": "Filename",
+    "pages.safe.files-list.size": "Size",
+    "pages.safe.files-list.created": "Created",
+    "pages.safe.files-list.updated": "Updated",
+    "pages.safe.files-list.accessed": "Accessed",
+    "pages.safe.upload-button.button": "Upload",
+    "pages.safe.upload-button.cancel": " Cancel ",
+    "pages.safe.upload-button.processing": "Processing...",
+    "pages.safe.upload-button.uploading": "Uploading...",
+    "pages.safe.title": "Files",
+    "pages.safe.notifications.uploadSuccess": "File uploaded successfully!",
+    "pages.safe.notifications.uploadFailed": "File upload failed"
+  }
+}
