@@ -1,0 +1,27 @@
+<table class="table is-striped is-hoverable is-fullwidth">
+  <thead>
+  <tr>
+    <th>pages.safe.files-list.header.Filename</th>
+    <th>pages.safe.files-list.header.Size</th>
+    <th>pages.safe.files-list.header.Created</th>
+    <th>pages.safe.files-list.header.Updated</th>
+    <th>pages.safe.files-list.header.Accessed</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (file of files(); track file.id) {
+      <tr>
+        <td>
+          <span [class]="['fiv-cla', 'fiv-icon-' + file.extension]" [title]="file.mimetype"></span>
+          {{ file.filename }}
+        </td>
+        <td [title]="file.size">
+          {{ file.size | fileSize }}
+        </td>
+        <td title="{{ file.created | timeAgo }}">{{ file.created | date }}</td>
+        <td title="{{ file.updated | timeAgo }}">{{ file.updated | date }}</td>
+        <td title="{{ file.accessed | timeAgo }}">{{ file.accessed | date }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

@@ -7,7 +7,7 @@ export const isLoggedInGuard = () => {
     if (inject(SessionService).isLoggedIn()) {
         return true;
     }
-    navigateToLogin(inject(Router));
+    void navigateToLogin(inject(Router));
     return false;
 };
 
@@ -15,6 +15,6 @@ export const isNotLoggedInGuard = () => {
     if (!inject(SessionService).isLoggedIn()) {
         return true;
     }
-    navigateToHome(inject(Router));
+  void navigateToHome(inject(Router));
     return false;
 };

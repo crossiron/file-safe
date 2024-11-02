@@ -1,22 +1,36 @@
-import {ResolveFn} from '@angular/router';
-import {inject} from '@angular/core';
-import {ListModel} from './safe.model';
+import {inject, Signal} from '@angular/core';
 import {SafeService} from './safe.service';
+import {ResolvedSafeModel} from './safe.models';
+import {ActivatedRoute, ResolveFn} from '@angular/router';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {map} from 'rxjs';
 
-const safeFileListResolver: ResolveFn<ListModel> = async () => {
+const safeModelResolver: ResolveFn<ResolvedSafeModel> = async (): Promise<ResolvedSafeModel> => {
   try {
     return {
       ...await inject(SafeService).getFiles(),
-      error: undefined,
+      filesError: undefined,
     }
   } catch (error) {
     return {
       files: [],
-      error: error as Error,
+      filesError: {
+        type: 'danger',
+        message: 'safe.files.notification.failed',
+      }
     }
   }
 }
 
 export const safeResolver = () => ({
-  list: safeFileListResolver
+  model: safeModelResolver
 });
+
+export const fromResolver = <T>(
+  route: ActivatedRoute,
+  property: string,
+  initialValue: T
+): Signal<T> => toSignal(
+  route.data.pipe(map(data => data[property] as T)),
+  {initialValue}
+);

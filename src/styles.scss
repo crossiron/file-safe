@@ -11,7 +11,11 @@ $dark-slate-grey-2: #4c5b5b;
 
 @use "bulma/sass" with (
   $cssvars-prefix: "file-safe-",
-  $primary: $orange
+  $primary: $orange,
+  $section-padding: 1.5rem 0.5rem,
+  $section-padding-desktop: 1.5rem 1.5rem,
+  $section-padding-medium: 4.5rem 2rem,
+  $section-padding-large: 9rem 3rem,
 );
 
 @import "file-icon-vectors/dist/file-icon-classic.css";

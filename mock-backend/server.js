@@ -11,8 +11,15 @@ app.get('/v1/files', (req, res) => {
 const storage = multer.memoryStorage();
 const upload = multer({storage: storage});
 
-app.post('/v1/files', upload.single('file'), (req, res) => {
-  res.json(uploadFile(req.file));
+app.post('/v1/files', upload.single('file'), async (req, res) => {
+  if (req.file.originalname.startsWith('NOK')) {
+    res.status(400).send({
+      code: 123
+    });
+    return;
+  }
+
+  res.json(await uploadFile(req.file));
 });
 
 app.listen(port, () => {

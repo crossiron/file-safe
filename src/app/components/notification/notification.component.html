@@ -1,0 +1,6 @@
+@if (notification) {
+  <div class="notification" [class]="'is-' + (notification.type || 'info')">
+    <button class="delete" type="button" (click)="onCloseClick()"></button>
+    {{ notification.message }}
+  </div>
+}

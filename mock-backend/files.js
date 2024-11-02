@@ -106,7 +106,7 @@ const data = [
 const files = () => ({
   files: data.sort((a, b) => b.created - a.created),
 });
-const uploadFile = (file) => {
+const uploadFile = async (file) => {
   data.push({
     id: Math.random().toString(36).slice(2),
     filename: file.originalname,
@@ -117,9 +117,13 @@ const uploadFile = (file) => {
     accessed: new Date(),
     mimetype: file.mimetype
   });
-  return {
-    file: data[data.length - 1]
-  }
+  return await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        file: data[data.length - 1]
+      })
+    }, 2000);
+  });
 }
 
 exports.files = files;
