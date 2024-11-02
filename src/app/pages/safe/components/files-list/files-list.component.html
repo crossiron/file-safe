@@ -11,8 +11,8 @@
   <tbody>
     @for (file of files(); track file.id) {
       <tr>
-        <td>
-          <span [class]="['fiv-cla', 'fiv-icon-' + file.extension]" [title]="file.mimetype"></span>
+        <td [title]="file.mimetype">
+          <span [class]="['fiv-cla', 'fiv-icon-' + file.extension]"></span>
           {{ file.filename }}
         </td>
         <td [title]="file.size">
