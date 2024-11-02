@@ -9,28 +9,16 @@ import {Router} from '@angular/router';
 })
 export class SessionService {
   #storage = inject(SessionStorageService);
-  #router = inject(Router);
-
-  #selfLogoutTimerID?: number;
-
-  #registerLastActivity(time: number) {
-    clearTimeout(this.#selfLogoutTimerID);
-    if (time === SessionStorageService.LAST_ACTIVITY_INITIAL) {
-      this.#selfLogoutTimerID = undefined;
-    } else {
-      this.#selfLogoutTimerID = window.setTimeout(() => this.logout(), environment.sessionTimeout);
-    }
-    this.#storage.lastActivity.set(time);
-  }
-
   isLoggedIn = computed(() => {
     const lastActivity = this.#storage.lastActivity();
     return lastActivity !== SessionStorageService.LAST_ACTIVITY_INITIAL && (Date.now() - lastActivity) < environment.sessionTimeout
   });
+  #router = inject(Router);
+  #selfLogoutTimerID?: number;
 
   login(): void {
     this.#registerLastActivity(Date.now());
-    navigateToHome(this.#router);
+    void navigateToHome(this.#router);
   }
 
   extend(): void {
@@ -43,6 +31,16 @@ export class SessionService {
 
   logout(): void {
     this.#registerLastActivity(SessionStorageService.LAST_ACTIVITY_INITIAL);
-    navigateToLogin(this.#router);
+    void navigateToLogin(this.#router);
+  }
+
+  #registerLastActivity(time: number) {
+    clearTimeout(this.#selfLogoutTimerID);
+    if (time === SessionStorageService.LAST_ACTIVITY_INITIAL) {
+      this.#selfLogoutTimerID = undefined;
+    } else {
+      this.#selfLogoutTimerID = window.setTimeout(() => this.logout(), environment.sessionTimeout);
+    }
+    this.#storage.lastActivity.set(time);
   }
 }

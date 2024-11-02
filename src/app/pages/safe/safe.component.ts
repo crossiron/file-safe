@@ -28,17 +28,15 @@ import {ResolvedSafeModel, SafeFile} from './safe.models';
   styleUrl: './safe.component.scss'
 })
 export class SafeComponent {
-  files: Signal<SafeFile[]> = computed(() => this.#resolverModel().files);
-  filesError: Signal<Notification<"danger"> | undefined> = computed(() => this.#resolverModel().filesError);
   uploadNotification: WritableSignal<Notification | undefined> = signal<Notification | undefined>(undefined);
-
   #router = inject(Router);
   #route = inject(ActivatedRoute);
-
   #resolverModel = fromResolver<ResolvedSafeModel>(this.#route, 'model', {
     files: [],
     filesError: undefined
   });
+  files: Signal<SafeFile[]> = computed(() => this.#resolverModel().files);
+  filesError: Signal<Notification<"danger"> | undefined> = computed(() => this.#resolverModel().filesError);
 
   onUpload($event: UploadOutcome) {
     if ($event.success) {

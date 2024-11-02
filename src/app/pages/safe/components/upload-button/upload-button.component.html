@@ -1,9 +1,9 @@
 <div class="file is-primary is-small">
   <label class="file-label">
-    <input class="file-input" type="file" name="file" (change)="onSelectFile($event)"/>
+    <input (change)="onSelectFile($event)" class="file-input" name="file" type="file"/>
     <span class="file-cta">
       <span class="file-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="Upload--Streamline-Font-Awesome"><desc>Upload Streamline Icon: https://streamlinehq.com</desc>
+        <svg id="Upload--Streamline-Font-Awesome" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><desc>Upload Streamline Icon: https://streamlinehq.com</desc>
           <!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path
             d="M288 109.3V352c0 17.7 -14.3 32 -32 32s-32 -14.3 -32 -32V109.3l-73.4 73.4c-12.5 12.5 -32.8 12.5 -45.3 0s-12.5 -32.8 0 -45.3l128 -128c12.5 -12.5 32.8 -12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5 -45.3 0L288 109.3zM64 352h128c0 35.3 28.7 64 64 64s64 -28.7 64 -64h128c35.3 0 64 28.7 64 64v32c0 35.3 -28.7 64 -64 64H64c-35.3 0 -64 -28.7 -64 -64v-32c0 -35.3 28.7 -64 64 -64zm368 104a24 24 0 1 0 0 -48 24 24 0 1 0 0 48z"
             fill="#000000" stroke-width="1"></path></svg>
@@ -12,13 +12,13 @@
     </span>
   </label>
 </div>
-<div class="modal" [class.is-active]="isModalActive()">
+<div [class.is-active]="isModalActive()" class="modal">
   <div class="modal-background"></div>
   <div class="modal-card">
     <section class="modal-card-body">
       <div class="block">
         <h4 class="has-text-centered title is-6">{{ title() }}</h4>
-        <progress class="progress is-primary" [attr.value]="state() === 'processing' ? null : progress().completed"
+        <progress [attr.value]="state() === 'processing' ? null : progress().completed" class="progress is-primary"
                   max="100">{{ progress().completed | percent }}
         </progress>
         <p class="has-text-centered is-size-7">
