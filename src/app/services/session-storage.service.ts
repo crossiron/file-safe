@@ -6,6 +6,7 @@ import {effect, Injectable, signal} from '@angular/core';
 export class SessionStorageService {
   static readonly LAST_ACTIVITY_KEY = 'last-activity';
   static readonly LAST_ACTIVITY_INITIAL = -1;
+  static readonly STORAGE: Storage = window.sessionStorage;
 
   lastActivity = signal(this.#get(SessionStorageService.LAST_ACTIVITY_KEY, SessionStorageService.LAST_ACTIVITY_INITIAL));
 
@@ -14,7 +15,7 @@ export class SessionStorageService {
   }
 
   #get<T>(key: string, fallback: T): T {
-    const item = window.sessionStorage.getItem(key);
+    const item = SessionStorageService.STORAGE.getItem(key);
     if (item === null) {
       return fallback;
     }
@@ -22,7 +23,7 @@ export class SessionStorageService {
   }
 
   #set<T>(key: string, value: T): void {
-    window.sessionStorage.setItem(key, JSON.stringify(value));
+    SessionStorageService.STORAGE.setItem(key, JSON.stringify(value));
   }
 
   #syncWithStorage(signalValue: unknown, initialValue: unknown, key: string) {
