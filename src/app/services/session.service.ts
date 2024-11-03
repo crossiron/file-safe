@@ -1,7 +1,7 @@
 import {computed, inject, Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {SessionStorageService} from './session-storage.service';
-import {navigateToHome, navigateToLogin} from '../app.routes';
+import {commands} from '../app.routes';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -9,16 +9,17 @@ import {Router} from '@angular/router';
 })
 export class SessionService {
   #storage = inject(SessionStorageService);
+  #router = inject(Router);
+  #selfLogoutTimerID?: number;
+
   isLoggedIn = computed(() => {
     const lastActivity = this.#storage.lastActivity();
     return lastActivity !== SessionStorageService.LAST_ACTIVITY_INITIAL && (Date.now() - lastActivity) < environment.sessionTimeout
   });
-  #router = inject(Router);
-  #selfLogoutTimerID?: number;
 
   login(): void {
     this.#registerLastActivity(Date.now());
-    void navigateToHome(this.#router);
+    void this.#router.navigate(commands.home);
   }
 
   extend(): void {
@@ -31,7 +32,7 @@ export class SessionService {
 
   logout(): void {
     this.#registerLastActivity(SessionStorageService.LAST_ACTIVITY_INITIAL);
-    void navigateToLogin(this.#router);
+    void this.#router.navigate(commands.login);
   }
 
   #registerLastActivity(time: number) {

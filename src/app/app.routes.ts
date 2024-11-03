@@ -1,8 +1,10 @@
-import {Router, Routes} from '@angular/router';
+import {Routes} from '@angular/router';
 import {isLoggedInGuard, isNotLoggedInGuard} from './guards/is-logged-in.guard';
 
-export const navigateToLogin = (router: Router) => router.navigate(['/login']);
-export const navigateToHome = (router: Router) => router.navigate(['/safe']);
+export const commands = {
+  login: ['/login'],
+  home: ['/safe'],
+};
 
 export const routes: Routes = [
   {
